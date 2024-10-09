@@ -18,7 +18,7 @@ namespace AusazTxandak
             this.BindingContext = this;
         }
 
- 
+
         /// <summary>
         /// Izena eskuratzen duen metodoa, erabilgarri dagoen konprobatzen du
         /// </summary>
@@ -35,12 +35,12 @@ namespace AusazTxandak
             {
                 var Aukeratutakoizena = erabilgarriIzenak[0];
                 Izenak.Add(Aukeratutakoizena);
-           
+
                 erabilgarriIzenak.RemoveAt(0);
 
                 if (erabilgarriIzenak.Count == 0)
                 {
-                   
+
                     await DisplayAlert("Bukatuta", "Izen guztiak gehitu dira.", "OK");
                 }
             }
@@ -51,11 +51,11 @@ namespace AusazTxandak
         }
 
 
-           /// <summary>
-           /// Gure izenarekin fitxzategia sortzen du
-           /// </summary>
-           /// <param name="sender"></param>
-           /// <param name="e"></param>
+        /// <summary>
+        /// Gure izenarekin fitxzategia sortzen du
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnSaveNamesClicked(object sender, EventArgs e)
         {
             var fitxatizena = FItxategiIzenentry.Text;
@@ -86,21 +86,21 @@ namespace AusazTxandak
                     {
                         foreach (var nombre in Izenak)
                         {
-                            await writer.WriteLineAsync(nombre); 
+                            await writer.WriteLineAsync(nombre);
                         }
                     }
                 }
 
-               
+
                 await DisplayAlert("Ondo", "Izenak gorde dira.", "OK");
             }
             catch (Exception ex)
             {
-              
+
                 await DisplayAlert("Error", "Arazo bat egon da izenak gordetzerakoan.", "OK");
             }
         }
-        
+
         /// <summary>
         /// Gure fitxategiko izenak irakurzten ditu eta ezartzen ditu
         /// </summary>
@@ -118,7 +118,7 @@ namespace AusazTxandak
             }
             else
             {
-              
+
                 NombresLabel.Text = "Ez dira izenak aurkitu.";
             }
         }

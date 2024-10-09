@@ -4,24 +4,40 @@
              x:Class="AusazTxandak.MainPage">
 
     <StackLayout Padding="10">
-        <Label Text="Izenen Zerrenda" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Izenen Zerrenda"
+                FontSize="24"
+                HorizontalOptions="Center"/>
 
-        <Button Text="Izenak Kargatu" Clicked="OnLoadNamesClicked" HorizontalOptions="Center" />
+        <Button Text="Izenak Kargatu"
+                Clicked="OnLoadNamesClicked"
+                HorizontalOptions="Center"/>
 
         <ListView ItemsSource="{Binding Izenak}"
                   BackgroundColor="#ECECEC"
                   HorizontalOptions="CenterAndExpand"
-                  WidthRequest="200" />
+                  WidthRequest="200"/>
 
-        <Label x:Name="NombresLabel" FontSize="16" HorizontalOptions="Center" />
+        <Label x:Name="NombresLabel"
+                FontSize="16"
+                HorizontalOptions="Center"/>
 
-        <Label Text="Fitxategiaren Izen berria:" FontSize="16" HorizontalOptions="Center" />
-        <Entry x:Name="FItxategiIzenentry" Placeholder="Ej. zerrenda.txt" HorizontalOptions="Center" />
+        <Label Text="Fitxategiaren Izen berria:"
+                FontSize="16"
+                HorizontalOptions="Center"/>
+        <Entry x:Name="FItxategiIzenentry"
+                Placeholder="Ej. zerrenda.txt"
+                HorizontalOptions="Center"/>
 
-        <Label Text="Ruta osoa:" FontSize="16" HorizontalOptions="Center" />
-        <Entry x:Name="RutaFitxategiEntry" Placeholder="Ej. C:\MisArchivos\" HorizontalOptions="Center" />
+        <Label Text="Ruta osoa:"
+                FontSize="16"
+                HorizontalOptions="Center"/>
+        <Entry x:Name="RutaFitxategiEntry"
+                Placeholder="Ej. C:\MisArchivos\"
+                HorizontalOptions="Center"/>
 
-        <Button Text="Izenak gorde" Clicked="OnSaveNamesClicked" HorizontalOptions="Center" />
+        <Button Text="Izenak gorde"
+                Clicked="OnSaveNamesClicked"
+                HorizontalOptions="Center"/>
     </StackLayout>
 
 </ContentPage>
