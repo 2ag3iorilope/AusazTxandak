@@ -19,6 +19,11 @@ namespace AusazTxandak
         }
 
  
+        /// <summary>
+        /// Izena eskuratzen duen metodoa, erabilgarri dagoen konprobatzen du
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnLoadNamesClicked(object sender, EventArgs e)
         {
             if (erabilgarriIzenak == null)
@@ -45,11 +50,16 @@ namespace AusazTxandak
             }
         }
 
-  
+
+           /// <summary>
+           /// Gure izenarekin fitxzategia sortzen du
+           /// </summary>
+           /// <param name="sender"></param>
+           /// <param name="e"></param>
         private async void OnSaveNamesClicked(object sender, EventArgs e)
         {
-            var fitxatizena = NombreArchivoEntry.Text;
-            var rutafitxat = RutaArchivoEntry.Text;
+            var fitxatizena = FItxategiIzenentry.Text;
+            var rutafitxat = RutaFitxategiEntry.Text;
 
             if (string.IsNullOrWhiteSpace(fitxatizena) || string.IsNullOrWhiteSpace(rutafitxat))
             {
@@ -58,10 +68,15 @@ namespace AusazTxandak
             }
 
             var fitxateiakonpleto = Path.Combine(rutafitxat, fitxatizena);
-            await GuardarNombresAsync(fitxateiakonpleto);
+            await GordeIzenakAsync(fitxateiakonpleto);
         }
 
-        private async Task GuardarNombresAsync(string fitxategiaa)
+        /// <summary>
+        /// Izenak idazten ditu fitxategian
+        /// </summary>
+        /// <param name="fitxategiaa"></param>
+        /// <returns></returns>
+        private async Task GordeIzenakAsync(string fitxategiaa)
         {
             try
             {
@@ -85,29 +100,38 @@ namespace AusazTxandak
                 await DisplayAlert("Error", "Arazo bat egon da izenak gordetzerakoan.", "OK");
             }
         }
-
+        
+        /// <summary>
+        /// Gure fitxategiko izenak irakurzten ditu eta ezartzen ditu
+        /// </summary>
+        /// <returns></returns>
         private async Task KargatuIzenak()
         {
-            var nombresArchivo = await LeerArchivoAsync("Izenak.txt");
+            var Fitxatizena = await IrakurriFitxategiakAsync("Izenak.txt");
 
-            if (nombresArchivo != null && nombresArchivo.Length > 0)
+            if (Fitxatizena != null && Fitxatizena.Length > 0)
             {
-                Console.WriteLine("Cargando nombres...");
-                erabilgarriIzenak = nombresArchivo.ToList();
+                Console.WriteLine("Izenak kargatzen......");
+                erabilgarriIzenak = Fitxatizena.ToList();
                 erabilgarriIzenak = erabilgarriIzenak.OrderBy(x => Guid.NewGuid()).ToList();
-                Console.WriteLine("Nombres cargados y mezclados.");
+                Console.WriteLine("Izenak nahastuta eta akrgatuta.");
             }
             else
             {
               
-                NombresLabel.Text = "No se encontraron nombres.";
+                NombresLabel.Text = "Ez dira izenak aurkitu.";
             }
         }
 
-        private async Task<string[]> LeerArchivoAsync(string archivo)
+        /// <summary>
+        /// Gure fitxategia riakurtzen duen metodoa
+        /// </summary>
+        /// <param name="archivo"></param>
+        /// <returns></returns>
+        private async Task<string[]> IrakurriFitxategiakAsync(string fitxategi)
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var resourcePath = $"AusazTxandak.Resources.Raw.{archivo}";
+            var resourcePath = $"AusazTxandak.Resources.Raw.{fitxategi}";
             Console.WriteLine(resourcePath);
 
             using (var stream = assembly.GetManifestResourceStream(resourcePath))
@@ -123,8 +147,8 @@ namespace AusazTxandak
                 }
                 else
                 {
-                    Console.WriteLine("El archivo no se encontró.");
-                    NombresLabel.Text = "El archivo no se encontró.";
+                    Console.WriteLine("Fitxategia ez da aurkitu.");
+                    NombresLabel.Text = "Fitxategia ez da aurkitu";
                 }
             }
 
