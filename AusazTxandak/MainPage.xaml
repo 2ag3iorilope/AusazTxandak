@@ -1,43 +1,60 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AusazTxandak.MainPage">
+<ContentPage
+    x:Class="AusazTxandak.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <StackLayout Padding="10">
-        <Label Text="Izenen Zerrenda"
-                FontSize="24"
-                HorizontalOptions="Center"/>
+        <!--  Orrialdearen izenburua  -->
+        <Label
+            FontSize="24"
+            HorizontalOptions="Center"
+            Text="Izenen Zerrenda" />
 
-        <Button Text="Izenak Kargatu"
-                Clicked="OnLoadNamesClicked"
-                HorizontalOptions="Center"/>
+        <!--  Fitxategitik izenak kargatzeko botoia  -->
+        <Button
+            Clicked="OnLoadNamesClicked"
+            HorizontalOptions="Center"
+            Text="Izenak Kargatu" />
 
-        <ListView ItemsSource="{Binding Izenak}"
-                  BackgroundColor="#ECECEC"
-                  HorizontalOptions="CenterAndExpand"
-                  WidthRequest="200"/>
+        <!--  Kargatutako izenak erakusten dituen zerrenda  -->
+        <ListView
+            BackgroundColor="#ECECEC"
+            HorizontalOptions="CenterAndExpand"
+            ItemsSource="{Binding Izenak}"
+            WidthRequest="200" />
 
-        <Label x:Name="NombresLabel"
-                FontSize="16"
-                HorizontalOptions="Center"/>
+        <!--  Izenekin lotutako mezuak erakusteko etiketa  -->
+        <Label
+            x:Name="NombresLabel"
+            FontSize="16"
+            HorizontalOptions="Center" />
 
-        <Label Text="Fitxategiaren Izen berria:"
-                FontSize="16"
-                HorizontalOptions="Center"/>
-        <Entry x:Name="FItxategiIzenentry"
-                Placeholder="Ej. zerrenda.txt"
-                HorizontalOptions="Center"/>
+        <!--  Fitxategiaren izen berria idazteko eremua  -->
+        <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            Text="Fitxategiaren Izen berria:" />
+        <Entry
+            x:Name="FItxategiIzenentry"
+            HorizontalOptions="Center"
+            Placeholder="Ej. zerrenda.txt" />
 
-        <Label Text="Ruta osoa:"
-                FontSize="16"
-                HorizontalOptions="Center"/>
-        <Entry x:Name="RutaFitxategiEntry"
-                Placeholder="Ej. C:\MisArchivos\"
-                HorizontalOptions="Center"/>
+        <!--  Fitxategia gordetzeko bide osoa idazteko eremua  -->
+        <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            Text="Ruta osoa:" />
+        <Entry
+            x:Name="RutaFitxategiEntry"
+            HorizontalOptions="Center"
+            Placeholder="Ej. C:\MisArchivos\" />
 
-        <Button Text="Izenak gorde"
-                Clicked="OnSaveNamesClicked"
-                HorizontalOptions="Center"/>
+        <!--  Izenak fitxategian gordetzeko botoia  -->
+        <Button
+            Clicked="OnSaveNamesClicked"
+            HorizontalOptions="Center"
+            Text="Izenak gorde" />
     </StackLayout>
 
 </ContentPage>
